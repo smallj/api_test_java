@@ -1,0 +1,48 @@
+group 'test_support_admin_microservice'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+        classpath("org.springframework.security:spring-security-crypto:3.1.0.RELEASE")
+        classpath("info.cukes:cucumber-java8:1.2.5")
+        classpath("info.cukes:cucumber-junit:1.2.5")
+        classpath("info.cukes:cucumber-spring:1.2.5")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-consuming-rest'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def CUCUMBERVERSION = "1.2.5"
+
+dependencies {
+    compile(
+            'org.springframework.boot:spring-boot-starter',
+            'org.springframework:spring-web',
+            'org.springframework.security:spring-security-core',
+            'com.fasterxml.jackson.core:jackson-databind'
+    )
+    testCompile(
+            'junit:junit:4.12',
+            'info.cukes:cucumber-junit:' + CUCUMBERVERSION,
+            'info.cukes:cucumber-spring:' + CUCUMBERVERSION,
+            'info.cukes:cucumber-java8:' + CUCUMBERVERSION
+    )
+}
+
+
